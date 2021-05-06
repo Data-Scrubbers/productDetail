@@ -8,6 +8,6 @@ CREATE TABLE related (
 );
 
 COPY related
-FROM '/Users/alisonclowes/HR_SEI2/SDC/productDetail/related.csv'
+FROM '/Users/alisonclowes/HR_SEI2/SDC/productDetail/schema/related.csv'
 DELIMITER ','
 CSV HEADER;

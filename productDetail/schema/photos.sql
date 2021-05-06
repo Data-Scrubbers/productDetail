@@ -7,7 +7,7 @@ CREATE TABLE photos (
 );
 
 COPY photos
-FROM '/Users/alisonclowes/HR_SEI2/SDC/productDetail/photos.csv'
+FROM '/Users/alisonclowes/HR_SEI2/SDC/productDetail/schema/photos.csv'
 DELIMITER ','
 CSV HEADER
 ;

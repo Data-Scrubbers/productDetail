@@ -13,6 +13,6 @@ CREATE TABLE styles (
 );
 
 COPY styles
-FROM '/Users/alisonclowes/HR_SEI2/SDC/productDetail/styles.csv'
+FROM '/Users/alisonclowes/HR_SEI2/SDC/productDetail/schema/styles.csv'
 DELIMITER ','
 CSV HEADER;

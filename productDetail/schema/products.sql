@@ -32,7 +32,7 @@ CREATE TABLE products (
 );
 
 COPY products
-FROM '/Users/alisonclowes/HR_SEI2/SDC/productDetail/product.csv'
+FROM '/Users/alisonclowes/HR_SEI2/SDC/productDetail/schema/product.csv'
 DELIMITER ','
 CSV HEADER
 ;

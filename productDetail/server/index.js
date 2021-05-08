@@ -2,7 +2,7 @@ const express = require('express');
 // const atelier = require('./helpers/atelier');
 const path = require('path');
 const bodyParser = require('body-parser');
-const getAllProducts = require('../database/queries.js');
+const queries = require('../database/queries.js');
 const app = express();
 const port = 3000;
 
@@ -10,19 +10,14 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({
   extended: true,
 }));
-// app.use(express.static(path.join(__dirname, './client/dist')));
+app.use(express.static('/Users/alisonclowes/HR_SEI2/SDC/FEC/client/dist'));
+console.log(__dirname);
 
-app.get('/api/*', (req, res) => {
-  const endpoint = req.url.substring(14);
-  console.log(endpoint);
-  getAllProducts(endpoint, (error, products) => {
-    if (error) {
-      console.log('Server Error while retrieving all products:', error);
-    } else {
-      res.send(products);
-    }
-  });
-});
+app.get('/api/products', queries.getAllProducts);
+
+app.get('/api/products/:product_id', queries.getProductById);
+
+// app.get()
 
 app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}`);

@@ -18,3 +18,5 @@ DELIMITER ','
 CSV HEADER;
 
 CREATE INDEX styles_product_id_index ON styles (product_id);
+
+CREATE INDEX styles_style_id_index ON styles (style_id);

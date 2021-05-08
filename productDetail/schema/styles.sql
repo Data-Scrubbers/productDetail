@@ -16,3 +16,5 @@ COPY styles
 FROM '/Users/alisonclowes/HR_SEI2/SDC/productDetail/schema/styles.csv'
 DELIMITER ','
 CSV HEADER;
+
+CREATE INDEX styles_product_id_index ON styles (product_id);

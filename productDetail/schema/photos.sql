@@ -11,3 +11,5 @@ FROM '/Users/alisonclowes/HR_SEI2/SDC/productDetail/schema/photos.csv'
 DELIMITER ','
 CSV HEADER
 ;
+
+CREATE INDEX photos_style_id_index ON photos (style_id);

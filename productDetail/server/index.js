@@ -10,8 +10,8 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({
   extended: true,
 }));
+
 app.use(express.static('/Users/alisonclowes/HR_SEI2/SDC/FEC/client/dist'));
-console.log(__dirname);
 
 app.get('/api/products', queries.getAllProducts);
 

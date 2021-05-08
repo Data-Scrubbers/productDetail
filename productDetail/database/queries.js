@@ -1,3 +1,4 @@
+/* eslint-disable radix */
 const pool = require('./config.js');
 
 const getAllProducts = (req, res) => {
@@ -11,7 +12,6 @@ const getAllProducts = (req, res) => {
 };
 
 const getProductById = (req, res) => {
-  // eslint-disable-next-line radix
   const id = parseInt(req.params.product_id);
 
   const queryString = 'select row_to_json(row) from(SELECT * FROM products LEFT JOIN features ON features.product_id = products.product_id WHERE products.product_id = $1) row;';
@@ -26,21 +26,24 @@ const getProductById = (req, res) => {
 };
 
 const getStyles = (req, res) => {
-  const id = req.params.product_id;
+  const id = parseInt(req.params.product_id);
 
-  const queryString = '';
+  const queryString = 'SELECT style_id, style_name, sale_price, original_price, default_style FROM styles WHERE product_id = $1';
   pool.query(queryString, [id], (err, results) => {
     if (err) {
       console.log('error getting styles', err);
     } else {
-      res.json(results.rows);
+      res.json({
+        product_id: id,
+        results: results.rows,
+      });
     }
   });
 };
 
 const getRelated = (req, res) => {
-  const id = req.params.product_id;
-  console.log('got here');
+  const id = parseInt(req.params.product_id);
+
   const queryString = 'SELECT related_product_id FROM related WHERE product_id = $1';
 
   pool.query(queryString, [id], (err, results) => {

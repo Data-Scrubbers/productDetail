@@ -2,7 +2,10 @@
 const pool = require('./config.js');
 
 const getAllProducts = (req, res) => {
-  pool.query(`SELECT * FROM products LIMIT 5`, (err, results) => {
+  const count = parseInt(req.params.count) || 5;
+
+  const queryString = 'SELECT * FROM products LIMIT $1';
+  pool.query(queryString, [count], (err, results) => {
     if (err) {
       console.log('err retrieving data', err);
     } else {
@@ -14,16 +17,14 @@ const getAllProducts = (req, res) => {
 const getProductById = (req, res) => {
   const id = parseInt(req.params.product_id);
 
-  // const queryString = 'select row_to_json(row) from(SELECT * FROM products LEFT JOIN features ON features.product_id = products.product_id WHERE products.product_id = $1) row;';
-
   const queryString = `SELECT
-    products.product_id AS id,
-    product_name AS name,
-    slogan,
-    product_description AS description,
-    category,
-    default_price,
-    jsonb_agg(json_build_object('feature', f.feature, 'value', f.feature_value)) AS features
+      products.product_id AS id,
+      product_name AS name,
+      slogan,
+      product_description AS description,
+      category,
+      default_price,
+      jsonb_agg(json_build_object('feature', f.feature, 'value', f.feature_value)) AS features
     FROM products LEFT JOIN features f ON f.product_id = products.product_id WHERE products.product_id = $1 GROUP BY products.product_id`;
 
   pool.query(queryString, [id], (err, results) => {

@@ -26,3 +26,5 @@ app.get('/api/products/:product_id/related', queries.getRelated);
 app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}`);
 });
+
+module.exports = app;

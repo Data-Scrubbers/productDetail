@@ -2,7 +2,7 @@
 \timing
 -- products
 SELECT * FROM products LIMIT 5 ;
-16.235ms
+  -- 16.235ms
 
 -- -- -- Product by ID
 \timing

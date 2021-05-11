@@ -1,8 +1,10 @@
+/* eslint-disable no-console */
 const express = require('express');
 // const atelier = require('./helpers/atelier');
-const path = require('path');
+// const path = require('path');
 const bodyParser = require('body-parser');
 const queries = require('../database/queries.js');
+
 const app = express();
 const port = 3000;
 

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable radix */
 const pool = require('./config.js');
 
@@ -68,14 +69,17 @@ const getStyles = (req, res) => {
 const getRelated = (req, res) => {
   const id = parseInt(req.params.product_id);
 
-  const queryString = 'SELECT related_product_id FROM related WHERE product_id = $1';
+  // const queryString = 'SELECT related_product_id FROM related WHERE product_id = $1';
+
+  const queryString = `SELECT
+  jsonb_agg(related.related_product_id) AS related
+  FROM related WHERE product_id = $1`;
 
   pool.query(queryString, [id], (err, results) => {
     if (err) {
       console.log('err retrieving related', err);
     } else {
-      console.log(results);
-      res.json(results.rows);
+      res.json(results.rows[0].related);
     }
   });
 };

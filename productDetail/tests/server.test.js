@@ -10,7 +10,7 @@ app.listen(5678, () => {
 describe('test the addlike method', () => {
   let pool;
 
-  beforeAll(async () => {
+  beforeEach(async () => {
     pool = await new Pool({
       user: 'alisonclowes',
       host: 'localhost',
@@ -19,7 +19,7 @@ describe('test the addlike method', () => {
     });
   });
 
-  afterAll(async (done) => pool.end(done));
+  afterEach(async (done) => pool.end(done));
 });
 
 describe('Test get products list endpoint', () => {

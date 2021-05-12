@@ -74,6 +74,7 @@ const getRelated = (req, res) => {
     if (err) {
       console.log('err retrieving related', err);
     } else {
+      console.log(results);
       res.json(results.rows);
     }
   });

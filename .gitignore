@@ -1,3 +1,17 @@
+package-lock.json
+
+#database config
+./productDetail/database/config.js
+productDetail/database/config.js
+
+# CSV
+features.CSV
+photos.CSV
+product.CSV
+related.CSV
+skus.CSV
+styles.CSV
+
 # Logs
 logs
 *.log

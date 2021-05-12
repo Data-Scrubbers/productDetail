@@ -10,6 +10,8 @@ CREATE TABLE skus (
 );
 
 COPY skus
-FROM '/Users/alisonclowes/HR_SEI2/SDC/productDetail/skus.csv'
+FROM '/Users/alisonclowes/HR_SEI2/SDC/productDetail/schema/skus.csv'
 DELIMITER ','
 CSV HEADER;
+
+CREATE INDEX skus_style_id_index ON skus (style_id);

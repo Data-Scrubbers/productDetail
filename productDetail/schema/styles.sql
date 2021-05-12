@@ -13,6 +13,10 @@ CREATE TABLE styles (
 );
 
 COPY styles
-FROM '/Users/alisonclowes/HR_SEI2/SDC/productDetail/styles.csv'
+FROM '/Users/alisonclowes/HR_SEI2/SDC/productDetail/schema/styles.csv'
 DELIMITER ','
 CSV HEADER;
+
+CREATE INDEX styles_product_id_index ON styles (product_id);
+
+CREATE INDEX styles_style_id_index ON styles (style_id);

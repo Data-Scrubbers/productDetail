@@ -10,6 +10,8 @@ CREATE TABLE features (
 );
 
 COPY features
-FROM '/Users/alisonclowes/HR_SEI2/SDC/productDetail/features.csv'
+FROM '/Users/alisonclowes/HR_SEI2/SDC/productDetail/schema/features.csv'
 DELIMITER ','
 CSV;
+
+CREATE INDEX features_product_id_index ON features (product_id);
